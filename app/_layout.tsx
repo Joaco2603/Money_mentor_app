@@ -1,9 +1,19 @@
-import { Stack } from "expo-router";
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StackNavigator } from "./routes/StackNavigator";
+import { TabNavigator } from "./routes/TabNavigator";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-export default function RootLayout() {
+const client = new QueryClient();
+
+export default function Layout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{headerShown: false}}/>
-    </Stack>
+    <QueryClientProvider client={client}>
+      <NavigationContainer independent={true}>
+        <StackNavigator />
+        {/* <TabNavigator /> */}
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }

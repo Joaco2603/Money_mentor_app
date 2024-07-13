@@ -1,7 +1,12 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import img from "../assets/startImage.png";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { Link } from "expo-router";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import type { RootStackParams } from "../routes/StackNavigator.tsx";
 
 export const StartScreen = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
   return (
     <View>
       <View style={styles.ballDecoratorAbove}></View>
@@ -20,6 +25,16 @@ export const StartScreen = () => {
             La primera aplicación de aprendizaje acerca de negocio
           </Text>
         </View>
+        <Pressable onPress={() => navigation.navigate("Auth" as never)}>
+          <LinearGradient
+            colors={["#A430AB", "#7744CD"]}
+            style={styles.primaryButton}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0.5 }}
+          >
+            <Text style={styles.textPrimaryButton}>Comenzar</Text>
+          </LinearGradient>
+        </Pressable>
       </View>
       <View style={styles.ballDecoratorBelow}></View>
     </View>
@@ -34,8 +49,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imgContainer: {
-    width: "60%",
+    width: "70%",
     height: "100%",
+    marginBottom: 10,
   },
   cardInfo: {
     flex: 1,
@@ -53,11 +69,12 @@ const styles = StyleSheet.create({
   },
   titleInfo: {
     fontSize: 24,
-    fontWeight: 400,
+    fontWeight: "bold",
   },
   textInfo: {
     alignSelf: "center",
-    letterSpacing: 2,
+    textAlign: "center",
+    letterSpacing: 1,
   },
   ballDecoratorAbove: {
     backgroundColor: "#83228A",
@@ -82,5 +99,14 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     width: "100%",
+  },
+  primaryButton: {
+    padding: 15,
+    paddingHorizontal: 50,
+    borderRadius: 15,
+  },
+  textPrimaryButton: {
+    color: "white",
+    fontWeight: "bold",
   },
 });
