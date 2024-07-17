@@ -116,7 +116,7 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
     },
     googleServicesContainer: {
-        marginTop: '10%',
+        marginTop: '5%',
         height: '6%',
     },
     googleServicesCard: {

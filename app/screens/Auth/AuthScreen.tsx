@@ -1,4 +1,11 @@
-import { Text, View, Pressable, Animated, PanResponder, Alert } from "react-native";
+import {
+  Text,
+  View,
+  Pressable,
+  Animated,
+  PanResponder,
+  Alert,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useMutation } from "@tanstack/react-query";
 import { moneyMentorApi } from "@/app/api/apiMoneyMentorAxios";
@@ -42,20 +49,7 @@ export const AuthScreen = () => {
         <LoginGoogle loginOrSignUp={false} />
       </View>
 
-      <Animated.View
-        style={
-          //{
-          // transform: [
-          //   {
-          //     translateY: clampedY,
-          //   },
-          // ],
-
-          // }}
-          pan.getLayout()
-        }
-        {...panResponder.panHandlers}
-      >
+      <Animated.View style={pan.getLayout()} {...panResponder.panHandlers}>
         <View style={styles.signUp}>
           <View style={styles.slideButton}></View>
 
