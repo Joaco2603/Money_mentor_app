@@ -1,11 +1,4 @@
-import {
-  Text,
-  View,
-  Pressable,
-  Animated,
-  PanResponder,
-  Alert,
-} from "react-native";
+import { Text, View, Pressable, Animated } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useMutation } from "@tanstack/react-query";
 import { moneyMentorApi } from "@/app/api/apiMoneyMentorAxios";
@@ -18,32 +11,30 @@ import {
   OrWhite,
   PrimaryInputs,
   SecundaryInputs,
+  TitlesSignUpAndLogin,
 } from "./components";
 import { AnimationSlideInY } from "../hooks/AnimationSlideInY";
 
 const AuthCallBackend = async ({ user }: { user: User }) => {
   const { data } = await moneyMentorApi.post<User>(`/user/signUp`, user);
-  return data;
+  const result = await data;
+  return result;
 };
 
 export const AuthScreen = () => {
-  // const authQuery = useMutation({
-  //   queryKey: [],
-  //   queryFn: () => AuthCallBackend(),
-  // });
-
   const { pan, panResponder, animateTo } = AnimationSlideInY();
 
   return (
     <SafeAreaView style={styles.main}>
       <ReturnButton />
-
       <View style={styles.login}>
-        <Pressable onPress={() => animateTo(600)}>
-          <Text style={[styles.h2Size, styles.textColorBlack]}>
-            Iniciar sesión
-          </Text>
-        </Pressable>
+        <TitlesSignUpAndLogin
+          text={"Iniciar Sesión"}
+          onPress={() => {
+            animateTo(600);
+          }}
+          color={"black"}
+        />
         <PrimaryInputs />
         <OrBlack />
         <LoginGoogle loginOrSignUp={false} />
@@ -52,13 +43,11 @@ export const AuthScreen = () => {
       <Animated.View style={pan.getLayout()} {...panResponder.panHandlers}>
         <View style={styles.signUp}>
           <View style={styles.slideButton}></View>
-
-          <Pressable>
-            <Text style={[styles.h1Size, styles.textColorWhite]}>
-              Incribirse
-            </Text>
-          </Pressable>
-
+          <TitlesSignUpAndLogin
+            text={"Inscribirse"}
+            onPress={() => {}}
+            color={"white"}
+          />
           <SecundaryInputs />
           <OrWhite />
           <LoginGoogle />

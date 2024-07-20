@@ -27,7 +27,7 @@ export const AnimationSlideInY = () => {
         pan.flattenOffset();
         // const shouldReset = gesture.moveY > 450 ? 600 : 0;
         const shouldReset =
-          gesture.dy > 70
+          gesture.dy > 130
             ? gesture.moveY == 600
               ? 0
               : 600

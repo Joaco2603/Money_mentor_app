@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { Link } from "expo-router";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { PrimaryButton } from "../../app/components/shared/index";
 import type { RootStackParams } from "../routes/StackNavigator.tsx";
 
 export const StartScreen = () => {
@@ -25,16 +24,10 @@ export const StartScreen = () => {
             La primera aplicación de aprendizaje acerca de negocio
           </Text>
         </View>
-        <Pressable onPress={() => navigation.navigate("Auth" as never)}>
-          <LinearGradient
-            colors={["#A430AB", "#7744CD"]}
-            style={styles.primaryButton}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0.5 }}
-          >
-            <Text style={styles.textPrimaryButton}>Comenzar</Text>
-          </LinearGradient>
-        </Pressable>
+        <PrimaryButton
+          text="Empezar"
+          onPress={() => navigation.navigate("Auth")}
+        />
       </View>
       <View style={styles.ballDecoratorBelow}></View>
     </View>

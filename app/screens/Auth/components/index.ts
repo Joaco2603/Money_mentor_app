@@ -1,3 +1,5 @@
+export { DatePickersAdaptation } from "./datePickersAdaptation";
+export { TitlesSignUpAndLogin } from "./TitlesSignUpAndLogin";
 export { OrBlack } from "./orBlack";
 export { OrWhite } from "./orWhite";
 export { LoginGoogle } from "./loginGoogle";
