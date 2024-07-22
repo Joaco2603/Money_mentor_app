@@ -2,35 +2,13 @@ import { PrimaryButton, SecundaryInput } from "@/app/components/shared";
 import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { moneyMentorApi } from "@/app/api/apiMoneyMentorAxios";
-import { DatePickersAdaptation } from "./index";
+import { DatePickersAdaptation } from "@/app/components/shared/datePickersAdaptation";
+import { useFormHandler } from "@/app/hooks/useFormHandler";
+import { useSignUpMutation } from "@/app/hooks/useSignUpMutation";
 
 export const SecundaryInputs = () => {
-  const onSubmit = async (newUser: FieldValues) => {
-    return await moneyMentorApi.post("/user/signUp", JSON.stringify(newUser));
-  };
-
-  const mutation = useMutation({
-    mutationFn: onSubmit,
-    onSuccess: async () => {
-      console.log("I'm first!");
-    },
-    onError: (error) => {
-      console.log("Error during mutation:", error);
-    },
-    onSettled: async () => {
-      console.log("I'm second!");
-    },
-  });
-
-  const { control, handleSubmit } = useForm();
-
-  const handleFormSubmit = async (data: FieldValues) => {
-    try {
-      await mutation.mutateAsync(data);
-    } catch (error) {
-      console.log("Form submit error:", error);
-    }
-  };
+  const signUpMutation = useSignUpMutation();
+  const { control, handleSubmit, handleFormSubmit } = useFormHandler(signUpMutation);
 
   return (
     <>

@@ -1,15 +1,13 @@
-import { View, Text, Pressable, Platform } from "react-native";
 import { useState } from "react";
+import { View, Text, Pressable, Platform } from "react-native";
 import { styles } from "@/app/theme/appTheme";
-import DateTimePicker from "@react-native-community/datetimepicker";
 import { Control, useController } from "react-hook-form";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 interface Props {
   name: string;
   control: Control;
 }
-
-const [showPicker, setShowPicker] = useState(false);
 
 export const DatePickersAdaptation = ({ control, name }: Props) => {
   const { field } = useController({
@@ -18,8 +16,13 @@ export const DatePickersAdaptation = ({ control, name }: Props) => {
     name,
   });
 
-  const onChange = (event, selectedDate) => {
-    setShowPicker(true);
+  const [showPicker, setShowPicker] = useState(false);
+
+  const handleDateChange = (date: {
+    date: Date | undefined;
+  }) => {
+    const currentDate = date || field.value;
+    field.onChange(currentDate);
   };
 
   return (
@@ -32,10 +35,11 @@ export const DatePickersAdaptation = ({ control, name }: Props) => {
       {Platform.OS === "ios" ? (
         <DateTimePicker
           value={field.value}
+          onChange={(evt, date) => handleDateChange({date})}
           mode="date"
           display="compact"
-          onChange={onChange}
           textColor="white"
+          accentColor="white"
         />
       ) : (
         <View>
@@ -49,9 +53,9 @@ export const DatePickersAdaptation = ({ control, name }: Props) => {
           {showPicker && (
             <DateTimePicker
               value={field.value}
+              onChange={field.onChange}
               mode="date"
               display="spinner"
-              onChange={onChange}
               minuteInterval={10}
               textColor="white"
               positiveButton={{ label: "Continue", textColor: "black" }}

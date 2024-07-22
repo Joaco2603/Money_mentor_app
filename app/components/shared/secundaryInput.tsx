@@ -1,5 +1,5 @@
 import { InputModeOptions, Text, TextInput, View } from "react-native";
-import { colors, styles } from "@/app/theme/appTheme";
+import { styles } from "@/app/theme/appTheme";
 import { Control, useController } from "react-hook-form";
 
 interface Props {
