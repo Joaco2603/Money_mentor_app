@@ -14,8 +14,6 @@ import {
   TitlesSignUpAndLogin,
 } from "./components";
 import { AnimationSlideInY } from "../hooks/AnimationSlideInY";
-import { useContext } from "react";
-import { UserContext } from "@/app/context/userContext";
 
 const AuthCallBackend = async ({ user }: { user: User }) => {
   const { data } = await moneyMentorApi.post<User>(`/user/signUp`, user);
@@ -25,7 +23,6 @@ const AuthCallBackend = async ({ user }: { user: User }) => {
 
 export const AuthScreen = () => {
   const { pan, panResponder, animateTo } = AnimationSlideInY();
-  const context = useContext(UserContext);
 
   return (
     <SafeAreaView style={styles.main}>

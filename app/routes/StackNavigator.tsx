@@ -1,17 +1,23 @@
+import { useContext, useEffect, useMemo, useReducer } from "react";
+import * as SecureStore from "expo-secure-store";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StartScreen } from "../screens/StartScreen";
 import { AuthScreen } from "../screens/Auth/AuthScreen";
-import { UserContextProvider } from "../context/userContext";
+import { UserContext, UserContextProvider } from "../context/userContext";
+import { HomeScreen } from "../screens";
 
 export type RootStackParams = {
   Start: undefined;
   Auth: undefined;
-  //   Product: { id: number; name: string };
+  Home: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParams>();
 
 export const StackNavigator = () => {
+  const valuesContext = useContext(UserContext);
+
+
   return (
     <UserContextProvider>
       <Stack.Navigator
@@ -23,8 +29,14 @@ export const StackNavigator = () => {
           },
         }}
       >
-        <Stack.Screen name="Start" component={StartScreen} />
-        <Stack.Screen name="Auth" component={AuthScreen} />
+        {valuesContext?.user === null ? (
+          <>
+            <Stack.Screen name="Start" component={StartScreen} />
+            <Stack.Screen name="Auth" component={AuthScreen} />
+          </>
+        ) : (
+          <Stack.Screen name="Home" component={HomeScreen} />
+        )}
       </Stack.Navigator>
     </UserContextProvider>
   );

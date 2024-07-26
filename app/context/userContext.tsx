@@ -1,10 +1,10 @@
+import { createContext, useState } from "react";
 import { User } from "./interface/user";
-import { createContext, useContext, useState } from "react";
 
 interface valuesContext {
   user: User | undefined;
-  login: () => void;
-  signUp: () => void;
+  login: (data: User | any) => void;
+  signUp: (data: User | any) => void;
 }
 
 export const UserContext = createContext<undefined | valuesContext>(undefined);
@@ -14,14 +14,14 @@ export const UserContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState<User | undefined>(undefined);
 
-  const login = () => {
-    setUser(undefined);
+  const login = (data: User) => {
+    setUser(data);
   };
 
-  const signUp = () => {
-    setUser(undefined);
+  const signUp = (data: User) => {
+    setUser(data);
   };
 
   return (
@@ -29,14 +29,4 @@ export const UserContextProvider = ({
       {children}
     </UserContext.Provider>
   );
-};
-
-export const useAuthContext = () => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error(
-      "authDateContext must be used within a AuthContextProvider"
-    );
-  }
-  return context;
 };

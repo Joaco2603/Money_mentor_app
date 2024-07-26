@@ -3,6 +3,6 @@ export interface User {
   last_name: string;
   email: string;
   born: string;
-  business_topic_user: number | undefined;
-  test_evaluated: string | undefined;
+  business_topic_user?: number | undefined;
+  test_evaluated?: string | undefined;
 }

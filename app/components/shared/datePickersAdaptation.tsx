@@ -10,17 +10,15 @@ interface Props {
 }
 
 export const DatePickersAdaptation = ({ control, name }: Props) => {
-  const { field } = useController({
+  const { field, fieldState, formState } = useController({
     control,
-    defaultValue: new Date(),
     name,
+    defaultValue: new Date(),
   });
 
   const [showPicker, setShowPicker] = useState(false);
 
-  const handleDateChange = (date: {
-    date: Date | undefined;
-  }) => {
+  const handleDateChange = (date: { date: Date | undefined }) => {
     const currentDate = date || field.value;
     field.onChange(currentDate);
   };
@@ -35,7 +33,7 @@ export const DatePickersAdaptation = ({ control, name }: Props) => {
       {Platform.OS === "ios" ? (
         <DateTimePicker
           value={field.value}
-          onChange={(evt, date) => handleDateChange({date})}
+          onChange={(evt, date) => field.onChange(date)}
           mode="date"
           display="compact"
           textColor="white"
