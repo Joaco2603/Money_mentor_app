@@ -1,7 +1,4 @@
 import { PrimaryButton, SecundaryInput } from "@/app/components/shared";
-import { FieldValues, useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import { moneyMentorApi } from "@/app/api/apiMoneyMentorAxios";
 import { DatePickersAdaptation } from "@/app/components/shared/datePickersAdaptation";
 import { useFormHandler } from "@/app/hooks/useFormHandler";
 import { useSignUpMutation } from "@/app/hooks/useSignUpMutation";

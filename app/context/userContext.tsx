@@ -1,10 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { User } from "./interface/user";
 
 interface valuesContext {
   user: User | undefined;
-  login: (data: User | any) => void;
-  signUp: (data: User | any) => void;
+  login: (data: User | undefined) => void;
+  signUp: (data: User | undefined) => void;
 }
 
 export const UserContext = createContext<undefined | valuesContext>(undefined);
@@ -16,11 +16,11 @@ export const UserContextProvider = ({
 }) => {
   const [user, setUser] = useState<User | undefined>(undefined);
 
-  const login = (data: User) => {
+  const login = (data: User | undefined) => {
     setUser(data);
   };
 
-  const signUp = (data: User) => {
+  const signUp = (data: User | undefined) => {
     setUser(data);
   };
 

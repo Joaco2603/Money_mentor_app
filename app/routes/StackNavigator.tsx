@@ -1,10 +1,11 @@
-import { useContext, useEffect, useMemo, useReducer } from "react";
-import * as SecureStore from "expo-secure-store";
+import { useContext, useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StartScreen } from "../screens/StartScreen";
 import { AuthScreen } from "../screens/Auth/AuthScreen";
 import { UserContext, UserContextProvider } from "../context/userContext";
 import { HomeScreen } from "../screens";
+
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 export type RootStackParams = {
   Start: undefined;
@@ -16,7 +17,12 @@ const Stack = createStackNavigator<RootStackParams>();
 
 export const StackNavigator = () => {
   const valuesContext = useContext(UserContext);
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
+  useEffect(() => {
+    console.log("Estado del usuario:", valuesContext?.user);
+    navigation.navigate("Home");
+  }, [valuesContext?.user, navigation]);
 
   return (
     <UserContextProvider>
@@ -29,7 +35,7 @@ export const StackNavigator = () => {
           },
         }}
       >
-        {valuesContext?.user === null ? (
+        {valuesContext?.user === undefined ? (
           <>
             <Stack.Screen name="Start" component={StartScreen} />
             <Stack.Screen name="Auth" component={AuthScreen} />
