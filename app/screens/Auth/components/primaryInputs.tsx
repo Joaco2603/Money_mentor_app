@@ -1,13 +1,11 @@
 import { PrimaryInput, PrimaryButton } from "@/app/components/shared";
-import { Alert } from "react-native";
-import { useForm } from "react-hook-form";
+import { useFormHandler } from "@/app/hooks/useFormHandler";
+import { useLoginMutation } from "@/app/hooks/useLoginMutation";
 
 export const PrimaryInputs = () => {
-  const onSubmit = (data: Object) => {
-    Alert.alert(JSON.stringify(data));
-  };
-
-  const { control, handleSubmit } = useForm();
+  const signUpMutation = useLoginMutation();
+  const { control, handleSubmit, handleFormSubmit } =
+    useFormHandler(signUpMutation);
 
   return (
     <>
@@ -27,7 +25,7 @@ export const PrimaryInputs = () => {
 
       <PrimaryButton
         text="Incribirse"
-        onPress={handleSubmit(onSubmit)}
+        onPress={handleSubmit(handleFormSubmit)}
       />
     </>
   );

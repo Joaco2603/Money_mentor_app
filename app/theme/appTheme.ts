@@ -31,6 +31,10 @@ export const styles = StyleSheet.create({
     alignTextRight: {
         textAlign: 'right',
     },
+    displayFlexContainer: {
+        display: "flex",
+        flexDirection: "row",
+    },
     textColorWhite: {
         color: 'white'
     },
@@ -147,5 +151,9 @@ export const styles = StyleSheet.create({
     imageGoogle: {
         width: 30,
         height: 30,
-    }
+    },
+    logoImg: {
+        width: 70,
+        height: 70,
+    },
 })

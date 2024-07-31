@@ -3,9 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StartScreen } from "../screens/StartScreen";
 import { AuthScreen } from "../screens/Auth/AuthScreen";
 import { UserContext, UserContextProvider } from "../context/userContext";
-import { HomeScreen } from "../screens";
-
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { TabNavigator } from "./TabNavigator";
 
 export type RootStackParams = {
   Start: undefined;
@@ -17,12 +15,6 @@ const Stack = createStackNavigator<RootStackParams>();
 
 export const StackNavigator = () => {
   const valuesContext = useContext(UserContext);
-  const navigation = useNavigation<NavigationProp<RootStackParams>>();
-
-  useEffect(() => {
-    console.log("Estado del usuario:", valuesContext?.user);
-    navigation.navigate("Home");
-  }, [valuesContext?.user, navigation]);
 
   return (
     <UserContextProvider>
@@ -35,14 +27,9 @@ export const StackNavigator = () => {
           },
         }}
       >
-        {valuesContext?.user === undefined ? (
-          <>
-            <Stack.Screen name="Start" component={StartScreen} />
-            <Stack.Screen name="Auth" component={AuthScreen} />
-          </>
-        ) : (
-          <Stack.Screen name="Home" component={HomeScreen} />
-        )}
+        <Stack.Screen name="Start" component={StartScreen} />
+        <Stack.Screen name="Auth" component={AuthScreen} />
+        <Stack.Screen name="Home" component={TabNavigator} />
       </Stack.Navigator>
     </UserContextProvider>
   );
