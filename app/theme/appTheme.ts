@@ -18,9 +18,25 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
+        justifyContent: 'center',
+        backgroundColor: 'white'
+    },
+    containerRow: {
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'center',
     },
     alignItemsCenter: {
-        alignItems: "center"
+        alignItems: "center",
+    },
+    boxContainer: {
+        width: '50%',
+        height: 200,
+    },
+    boxContainerButton: {
+        width: '40%',
+        height: 100,
     },
     alignTextCenter: {
         textAlign: 'center',
@@ -31,9 +47,11 @@ export const styles = StyleSheet.create({
     alignTextRight: {
         textAlign: 'right',
     },
-    displayFlexContainer: {
-        display: "flex",
-        flexDirection: "row",
+    marginTen: {
+        margin: 10,
+    },
+    marginTopSix: {
+        marginTop: 60,
     },
     textColorWhite: {
         color: 'white'
@@ -56,6 +74,11 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         letterSpacing: 1,
     },
+    h4Size: {
+        fontSize: 10,
+        fontWeight: "bold",
+        letterSpacing: 1,
+    },
     textCenter: {
         textAlign: 'center'
     },
@@ -68,14 +91,14 @@ export const styles = StyleSheet.create({
     primaryButton: {
         marginTop: 10,
         padding: 15,
-        width: '60%',
-        paddingHorizontal: 50,
+        width: '100%',
         borderRadius: 15,
     },
     textPrimaryButton: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: 'bold',
         textAlign: 'center',
-        color: "white",
-        fontWeight: "bold",
     },
     main: {
         overflow: "hidden",
@@ -155,5 +178,52 @@ export const styles = StyleSheet.create({
     logoImg: {
         width: 70,
         height: 70,
+    },
+    imgCourseStart: {
+        width: '100%',
+        height: '100%',
+    },
+    imgSkills: {
+        width: '100%',
+        height: '100%',
+        position: 'relative'
+    },
+    balls: {
+        width: 60,
+        height: 60,
+        borderWidth: 5,
+        borderRadius: 30,
+    },
+    ballsPorcentage: {
+        width: 60,
+        height: 60,
+        borderColor: 'purple',
+        borderWidth: 5,
+        borderRadius: 30,
+    },
+    VerticalOrganizationWrap: {
+        marginTop: 10,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        width: "100%",
+        flexWrap: "wrap",
+        gap: 5,
+    },
+    cardsDescriptionsSubTopics: {
+        flex: 2,
+        alignItems: "center",
+        width: '80%',
+    },
+    cardBorder: {
+        borderRadius: 30,
+        // Para Android
+        elevation: 10,
+        // Para iOS
+        shadowColor: '#52006A',
+        shadowOffset: { width: 5, height: 5 },
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        backgroundColor: 'white'
     },
 })

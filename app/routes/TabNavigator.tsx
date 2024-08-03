@@ -15,11 +15,17 @@ export const TabNavigator = () => {
           elevation: 0,
           borderColor: "transparent",
           shadowColor: "transparent",
+          backgroundColor: "white",
         },
         tabBarStyle: {
           borderTopWidth: 0,
           elevation: 0,
+          backgroundColor: "#9735B5",
+          borderRadius: 100,
         },
+        tabBarActiveTintColor: "#FFFFFF",
+        tabBarInactiveTintColor: "#c2a1ca",
+        tabBarShowLabel: false,
       }}
     >
       <Tab.Screen
@@ -33,11 +39,31 @@ export const TabNavigator = () => {
         component={HomeScreen}
       />
       <Tab.Screen
+        name="Course"
+        options={{
+          title: "Course",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name="book" color={color} />
+          ),
+        }}
+        component={SettingsScreen}
+      />
+      <Tab.Screen
+        name="Evaluations"
+        options={{
+          title: "Evaluations",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name="fa" color={color} />
+          ),
+        }}
+        component={SettingsScreen}
+      />
+      <Tab.Screen
         name="Settings"
         options={{
           title: "Settings",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="cog" color={color} />
+            <FontAwesome size={28} name="user-o" color={color} />
           ),
         }}
         component={SettingsScreen}

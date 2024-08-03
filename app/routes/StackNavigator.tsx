@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StartScreen } from "../screens/StartScreen";
 import { AuthScreen } from "../screens/Auth/AuthScreen";
-import { UserContext, UserContextProvider } from "../context/userContext";
+import { UserContextProvider } from "../context/userContext";
 import { TabNavigator } from "./TabNavigator";
 
 export type RootStackParams = {
@@ -14,8 +14,6 @@ export type RootStackParams = {
 const Stack = createStackNavigator<RootStackParams>();
 
 export const StackNavigator = () => {
-  const valuesContext = useContext(UserContext);
-
   return (
     <UserContextProvider>
       <Stack.Navigator
