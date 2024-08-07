@@ -7,14 +7,30 @@ import {
 } from "@/app/components/shared/";
 import { categorys } from "@/app/helpers/CategorysOptions";
 
-export const CardDescriptionsCourses = () => {
+interface Prop {
+  title: string;
+  desc: string;
+  img?: string;
+  porcentage?: number;
+  link?: string;
+}
+
+export const CardDescriptionsCourses = ({
+  title,
+  desc,
+  img,
+  porcentage,
+  link,
+}: Prop) => {
   return (
-    <View style={{ flex: 2, alignItems: "center" }}>
+    <View
+      style={{ flex: 2, alignItems: "center", columnGap: 10, marginBottom: 30 }}
+    >
       <View style={styles.cardsDescriptionsSubTopics}>
         <View style={styles.cardBorder}>
           <View style={[{ marginLeft: 12 }]}>
-            <Text style={styles.h3Size}>Mentalidad</Text>
-            <Text>El principio de todo millonario es su mentalidad</Text>
+            <Text style={styles.h3Size}>{title}</Text>
+            <Text>{desc}</Text>
             <Text style={styles.h4Size}>Habilidades a adquirir</Text>
             <View style={styles.VerticalOrganizationWrap}>
               <SkillsBalls category={categorys.principles} />

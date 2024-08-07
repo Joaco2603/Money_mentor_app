@@ -5,3 +5,5 @@ export { PrimaryButton } from "./primaryButton";
 export { SecundaryButton } from "./SecundaryButton";
 export { SkillsBalls } from "./SkillsBalls";
 export { PorcentageBall } from "./PorcentageBall";
+export { Logo } from "./Logo";
+export { LoadingVideos } from "./LoadingVideos";

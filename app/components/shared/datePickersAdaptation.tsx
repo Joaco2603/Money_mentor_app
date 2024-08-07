@@ -51,7 +51,10 @@ export const DatePickersAdaptation = ({ control, name }: Props) => {
           {showPicker && (
             <DateTimePicker
               value={field.value}
-              onChange={field.onChange}
+              onChange={(evt, date) => {
+                field.onChange(date);
+                setShowPicker(false);
+              }}
               mode="date"
               display="spinner"
               minuteInterval={10}

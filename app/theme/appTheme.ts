@@ -226,4 +226,39 @@ export const styles = StyleSheet.create({
         shadowRadius: 5,
         backgroundColor: 'white'
     },
+    contentContainer: {
+        marginTop: 10,
+        alignItems: 'center'
+    },
+    video: {
+        width: 300,
+        height: 235,
+        borderRadius: 10,
+    },
+    controlsContainer: {
+        padding: 10,
+    },
+    CardProfileContainer: {
+        width: "90%",
+        height: 200,
+        backgroundColor: "#9327F0",
+        borderRadius: 30,
+    },
+    imgChip: {
+        width: 50,
+        height: 30,
+        borderRadius: 15,
+    },
+    imgSponsor: {
+        width: 50,
+        height: 50,
+        borderRadius: 15,
+    },
+    MarkXBools: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+        backgroundColor: '#968FAC',
+        marginRight: 10
+    }
 })

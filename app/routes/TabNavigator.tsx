@@ -1,5 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeScreen, SettingsScreen } from "../screens";
+import {
+  HomeScreen,
+  SettingsScreen,
+  CourseScreen,
+  Evaluations,
+} from "../screens";
 import { FontAwesome } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -20,12 +25,14 @@ export const TabNavigator = () => {
         tabBarStyle: {
           borderTopWidth: 0,
           elevation: 0,
-          backgroundColor: "#9735B5",
-          borderRadius: 100,
+          shadowOpacity: 0,
+          shadowRadius: 0,
+          backgroundColor: "#ecdff0",
+          overflow: "hidden",
         },
-        tabBarActiveTintColor: "#FFFFFF",
-        tabBarInactiveTintColor: "#c2a1ca",
-        tabBarShowLabel: false,
+        tabBarActiveTintColor: "#bc97c8",
+        tabBarInactiveTintColor: "#83228A",
+        // tabBarShowLabel: false,
       }}
     >
       <Tab.Screen
@@ -39,14 +46,14 @@ export const TabNavigator = () => {
         component={HomeScreen}
       />
       <Tab.Screen
-        name="Course"
+        name="Courses"
         options={{
           title: "Course",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="book" color={color} />
+            <FontAwesome size={23} name="book" color={color} />
           ),
         }}
-        component={SettingsScreen}
+        component={CourseScreen}
       />
       <Tab.Screen
         name="Evaluations"
@@ -56,12 +63,12 @@ export const TabNavigator = () => {
             <FontAwesome size={28} name="fa" color={color} />
           ),
         }}
-        component={SettingsScreen}
+        component={Evaluations}
       />
       <Tab.Screen
         name="Settings"
         options={{
-          title: "Settings",
+          title: "Profile",
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="user-o" color={color} />
           ),
